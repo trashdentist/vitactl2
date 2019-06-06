@@ -15,16 +15,20 @@
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
+
 Route.on('/').render('index')
+
 Route.group(() => {
-Route.on('/signin').render('user/login')
-Route.on('/signup').render('user/register')
-Route.post('/signup', 'RegisterController.create')
-Route.post('/signin', 'LoginController.login')
+    Route.on('/signin').render('user/login')
+    Route.on('/signup').render('user/register')
+    Route.post('/signup', 'RegisterController.create')
+    Route.post('/signin', 'LoginController.login')
 }).middleware(['guest'])
+
 Route.group(() => {
-Route.get('/dashboard', 'HubController.main')
-Route.post('/attack/new', 'AttackController.create')
-Route.post('/attack/stop', 'AttackController.stop')
-Route.get('/logout', 'LoginController.logout')
+    Route.get('/dashboard', 'HubController.main')
+    Route.post('/attack/new', 'AttackController.create')
+    Route.post('/attack/stop', 'AttackController.stop')
+    Route.get('/logout', 'LoginController.logout')
 }).middleware(['auth'])
+
